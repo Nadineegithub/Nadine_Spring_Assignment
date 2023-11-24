@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1 ">
+		<title>Student Managment Sytem</title>
+		<link rel="stylesheet" href="../static/styles.css">
+	</head>
+
+	<body>
+	<th:block th:include="nav-bar"></th:block>
+		<h1>Save Student</h1>
+		<form th:action="@{/saveStudent}" th:object="${employee}" method="post">
+<!--			<input type="hidden" th:field="*{regNo}" placeholder="Id">-->
+			<input type="text" th:field="*{fullname}" placeholder="Student Full Name">
+			<input type="date" th:field="*{dob}" placeholder="Date of Birth">
+			<button type="submit">Save</button>
+		</form>
+	</body>
+</html>

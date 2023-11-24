@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1 ">
+		<title>AUCA Student Managment Sytem</title>
+		<link rel="stylesheet" type="text/css" href="../static/styles.css">
+	</head>
+	<body>
+	<div>
+	<th:block th:include="nav-bar"></th:block>
+	</div>
+		<div align="center">
+			<h1>Teacher List</h1>
+			<button><a th:href="@{/showNewTeacherForm}">Add Teacher</a></button>
+			<table>
+				<thead>
+					<tr>
+						<th>Teacher Code</th>
+						<th>Name of Teacher</th>
+						<th>Qualification</th>
+						<th>Type</th>
+						
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="employee: ${listTeachers}">
+						<td th:text="${employee.code}"></td>
+						<td th:text="${employee.tName}"></td>
+						<td th:text="${employee.qualification}"></td>
+						<td th:text="${employee.type}"></td>
+						<td><a th:href="@{/showFormForUpdateTeacher/{id}(id=${employee.id})}">Update</a>
+						<a th:href="@{/deleteTeacher/{id}(id=${employee.id})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1 ">
+		<title>Student Managment Sytem</title>
+		<link rel="stylesheet" href="../static/styles.css">
+	</head>
+	<body>
+	<th:block th:include="nav-bar"></th:block>
+		<h1>Update Course</h1>
+		<form th:action="@{/saveCourse}" th:object="${course}" method="post">
+			<input type="hidden" th:field="*{id}" placeholder="Id">
+
+
+			<select th:field="*{semester}">
+				<option th:each=" sem: ${semesterList}" th:value="${sem.id}" th:text="${sem.sName}"></option>
+			</select>
+			<select th:field="*{teacher}">
+				<option th:each=" teacher: ${teacherList}" th:value="${teacher.id}" th:text="${teacher.tName}"></option>
+			</select>
+			<select th:field="*{courseDefinition}">
+			<option th:each=" employee: ${courseDefinitionList}" th:value="${employee.id}" th:text="${employee.cName}"></option>
+		</select>
+			<select th:field="*{department}">
+				<option th:each=" employee: ${listOfPrograms}" th:value="${employee.id}" th:text="${employee.name}"></option>
+			</select>
+
+			<button type="submit">Update</button>
+		</form>
+	</body>
+</html>

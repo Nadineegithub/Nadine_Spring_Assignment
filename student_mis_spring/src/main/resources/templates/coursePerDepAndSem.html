@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1 ">
+	<title>AUCA Student Managment Sytem</title>
+	<link rel="stylesheet" type="text/css" href="../static/styles.css">
+</head>
+
+<body>
+
+<th:block th:include="nav-bar"></th:block>
+<div align="center">
+	<h1>List of Courses Per Semseter and Department</h1>
+	<form th:action="@{/coursePerDepAndSem}" th:object="${semesterList}">
+		<select name="id" id="id">
+			<option value="semester">Select Semester</option>
+			<option th:each=" sem: ${semesterList}" th:value="${sem.id}" th:text="${sem.sName}"  ></option>
+		</select>
+		<select name="depId" id="depId">
+			<option value="semester">Select Department</option>
+			<option th:each=" dep:${listOfDepartment}" th:value="${dep.id}" th:text="${dep.name}"  ></option>
+		</select>
+		<button type="submit">Find</button>
+	</form>
+	<table>
+		<thead>
+		<tr>
+			<th>Semester</th>
+			<th>Department</th>
+			<th>Course</th>
+
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="employee: ${stdPerSem}">
+			<td th:text="${employee.semester.sName}"></td>
+			<td th:text="${employee.department.name}"></td>
+			<td th:text="${employee.courseDefinition.cName}"></td>
+
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

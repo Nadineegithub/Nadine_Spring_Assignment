@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1 ">
+		<title>Employee Managment Sytem</title>
+		<link rel="stylesheet" type="text/css" href="../static/styles.css">
+	</head>
+	<body>
+
+	<th:block th:include="nav-bar"></th:block>
+		<div align="center">
+			<h1>Student List</h1>
+			<button><a th:href="@{/showNewStudentForm}">Add Student</a></button>
+			<table>
+				<thead>
+					<tr>
+						<th>Full Name</th>
+						<th>Date Of Birth</th>
+						
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="employee: ${listStudent}">
+						<td th:text="${employee.fullname}"></td>
+						<td th:text="${employee.dob}"></td>
+						<td><a th:href="@{/showFormForUpdateStd/{id}(id=${employee.regNo})}">Update</a>
+						<a th:href="@{/deleteStd/{id}(id=${employee.regNo})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</body>
+</html>

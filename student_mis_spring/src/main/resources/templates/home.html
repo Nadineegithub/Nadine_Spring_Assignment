@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:include="nav-bar"></th:block>
+      <li><a th:href="@{/listStdPerSem}">List of Students per Semester</a></li>
+      <li><a th:href="@{/listStdPerDepAndSem}" >List of Students per Department and Semester</a></li>
+      <li><a th:href="@{/listStdPerCourseAndSem}" >List of Students per Course and Semester</a></li>
+      <li><a th:href="@{/listCoursePerDepAndSem}" >List of Courses per Department and Semester</a></li>
+      <li><a th:href="@{/listCoursePerStudent}" >List of Courses per Students</a></li>
+
+</body>
+</html>

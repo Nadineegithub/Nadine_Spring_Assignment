@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1 ">
+	<title>AUCA Student Managment Sytem</title>
+	<link rel="stylesheet" type="text/css" href="../static/styles.css">
+</head>
+<body>
+<th:block th:include="nav-bar"></th:block>
+<div align="center">
+	<h1>List of Courses Per Student</h1>
+	<form th:action="@{/coursePerStudent}" th:object="${courseList}" method="get">
+		<select name="regNo" id="regNo">
+			<option value="semester">Select Student</option>
+			<option th:each="student:${semesterList}" th:value="${student.regNo}" th:text="${student.fullname}"></option>
+		</select>
+		<button type="submit">Find</button>
+	</form>
+		<table>
+			<thead>
+			<tr>
+				<th>Credits</th>
+				<th>Result</th>
+				<th>Student</th>
+				<th>Course</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="employee:${stdPerSem}">
+				<td th:text="${employee.credits}"></td>
+				<td th:text="${employee.results}"></td>
+				<td th:text="${employee.studentRegistration.student.fullname}"></td>
+				<td th:text="${employee.course.courseDefinition.cName}"></td>
+			</tbody>
+		</table>
+
+</div>
+</body>
+</html>

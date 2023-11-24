@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1 ">
+		<title>Student Managment Sytem</title>
+		<link rel="stylesheet" href="../static/styles.css">
+	</head>
+	<body>
+
+	<th:block th:include="nav-bar"></th:block>
+		<h1>Update Semester</h1>
+		<form th:action="@{/saveSemester}" th:object="${semester}" method="post">
+			<input type="hidden" th:field="*{id}" placeholder="Id">
+			<input type="text" th:field="*{sName}" placeholder="Semester Name">
+			<input type="date" th:field="*{startDate}" placeholder="Start Date">
+			<input type="date" th:field="*{endDate}" placeholder="End Date">
+			<button type="submit">Update</button>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1 ">
+	<title>AUCA Student Managment Sytem</title>
+	<link rel="stylesheet" type="text/css" href="../static/styles.css">
+</head>
+<body>
+<th:block th:include="nav-bar"></th:block>
+<div align="center">
+	<h1>List of Students per Course and Semester</h1>
+	<form th:action="@{/coursePerDepAndSem}" th:object="${semesterList}">
+		<select name="id" id="id">
+			<option value="semester">Select Semester</option>
+			<option th:each=" sem: ${semesterList}" th:value="${sem.id}" th:text="${sem.sName}"  ></option>
+		</select>
+		<select name="depId" id="depId">
+			<option value="semester">Select Course</option>
+			<option th:each=" dep:${listOfDepartment}" th:value="${dep.id}" th:text="${dep.cName}"  ></option>
+		</select>
+		<button type="submit">Find</button>
+	</form>
+	<table>
+		<thead>
+		<tr>
+			<th>Student</th>
+			<th>Semester</th>
+			<th>Status</th>
+			<th>Department</th>
+			<th>Reg_Date</th>
+
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="employee: ${stdPerSem}">
+			<td th:text="${employee.student.fullname}"></td>
+			<td th:text="${employee.semester.sName}"></td>
+			<td th:text="${employee.registrationStatus}"></td>
+			<td th:text="${employee.department.name}"></td>
+			<td th:text="${employee.registrationDate}"></td>
+
+		</tbody>
+	</table>
+
+</div>
+</body>
+</html>

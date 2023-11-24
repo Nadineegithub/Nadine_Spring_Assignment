@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1 ">
+		<title>AUCA Managment Sytem</title>
+		<link rel="stylesheet" type="text/css" href="../static/styles.css">
+	</head>
+	<body>
+	<th:block th:include="nav-bar"></th:block>
+		<div align="center">
+			<h1>Semester List</h1>
+			<button><a th:href="@{/showNewSemesterForm}">Add Semester</a></button>
+			<table>
+				<thead>
+					<tr>
+						<th>Semester Name</th>
+						<th>Start Date</th>
+						<th>End Date</th>
+						
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="employee:${listSemesters}">
+						<td th:text="${employee.sName}"></td>
+						<td th:text="${employee.startDate}"></td>
+						<td th:text="${employee.endDate}"></td>
+						<td><a th:href="@{/showFormForUpdateSemester/{id}(id=${employee.id})}">Update</a>
+						<a th:href="@{/deleteSemester/{id}(id=${employee.id})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</body>
+</html>

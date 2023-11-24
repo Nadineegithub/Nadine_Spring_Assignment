@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1 ">
+		<title>Student Managment Sytem</title>
+		<link rel="stylesheet" href="../static/styles.css">
+	</head>
+	<body>
+	<th:block th:include="nav-bar"></th:block>
+		<h1>Register Student</h1>
+		<form th:action="@{/saveStudentRegistration}" th:object="${studentRegistrationDis}" method="post">
+<!--			<input type="hidden" th:field="*{regNo}" placeholder="Id">-->
+
+			<select th:field="*{student}">
+				<option value="semester">Select Student</option>
+				<option th:each=" sem: ${studentList}" th:value="${sem.regNo}" th:text="${sem.fullname}"></option>
+			</select>
+			<select th:field="*{semester}">
+				<option value="semester">Select Semester</option>
+				<option th:each=" sem: ${semesterList}" th:value="${sem.id}" th:text="${sem.sName}"></option>
+			</select>
+			<select th:field="*{department}">
+			<option value="course">Select Department</option>
+			<option th:each=" employee: ${listOfPrograms}" th:value="${employee.id}" th:text="${employee.name}"></option>
+		</select>
+
+			<input type="date" placeholder="Registration Date" th:field="*{registrationDate}">
+			<input type="hidden" th:field="*{registrationStatus}" th:value="PENDING">
+
+			<button type="submit">Save</button>
+		</form>
+	</body>
+</html>

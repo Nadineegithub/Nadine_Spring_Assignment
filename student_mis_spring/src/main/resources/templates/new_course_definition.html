@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1 ">
+		<title>Student Managment Sytem</title>
+		<link rel="stylesheet" href="../static/styles.css">
+	</head>
+	<body>
+
+	<th:block th:include="nav-bar"></th:block>
+		<h1>Save CourseDefinition</h1>
+		<form th:action="@{/saveCourseDefinition}" th:object="${employee}" method="post">
+<!--			<input type="hidden" th:field="*{id}" placeholder="Id">-->
+			<input type="text" th:field="*{code}" placeholder="Course code">
+			<input type="text" th:field="*{cName}" placeholder="Course Name">
+			<input type="text" th:field="*{description}" placeholder="Description">
+			<button type="submit">Save</button>
+		</form>
+	</body>
+</html>

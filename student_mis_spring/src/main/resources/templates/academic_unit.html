@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="ISO-8859-1 ">
+		<title>AUCA Student Managment Sytem</title>
+		<link rel="stylesheet" type="text/css" href="../static/styles.css">
+	</head>
+	<body>
+	<th:block th:include="nav-bar"></th:block>
+		<div align="center">
+			<h1>Academic Unit List</h1>
+			<button><a th:href="@{/showNewProgrammeForm}">Add Programme</a></button>
+			<button><a th:href="@{/showNewFacultyForm}">Add Faculty</a></button>
+			<button><a th:href="@{/showNewDepartmentForm}">Add Department</a></button>
+			<table>
+				<thead>
+					<tr>
+						<th>Code</th>
+						<th>Name</th>
+						<th>Unit</th>
+						<th>Parent</th>
+
+<!--						<th>Action</th>-->
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="list: ${listAcademicUnits}">
+						<td th:text="${list.code}"></td>
+						<td th:text="${list.name}"></td>
+						<td th:text="${list.unit}"></td>
+						<td th:text="${list.parent.name}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
